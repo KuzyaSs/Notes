@@ -12,8 +12,8 @@ import org.koin.compose.koinInject
 import tech.ermakov.notes.core.navigation.Navigator
 import tech.ermakov.notes.core.navigation.components.NavigationHandler
 import tech.ermakov.notes.core.ui.NotesTheme
-import tech.ermakov.notes.features.home.HomeDestination
-import tech.ermakov.notes.features.home.homeDestination
+import tech.ermakov.notes.features.home.presentation.HomeDestination
+import tech.ermakov.notes.features.home.presentation.homeDestination
 import tech.ermakov.notes.features.noteEditor.noteEditorDestination
 
 @Preview

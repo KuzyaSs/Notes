@@ -21,7 +21,7 @@ fun NavigationHandler(
             }
 
             is NavigatorAction.Navigate -> {
-                navController.navigate(action.destination)
+                navController.navigate(action.destination, builder = action.builder)
             }
 
             is NavigatorAction.Replace -> {
