@@ -22,10 +22,10 @@ kotlin {
 
     jvm()
 
-    wasmJs {
-        browser()
-        binaries.executable()
-    }
+//    wasmJs {
+//        browser()
+//        binaries.executable()
+//    }
 
     listOf(
         iosX64(),
@@ -33,28 +33,29 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "Notes"
             isStatic = true
         }
     }
 
     sourceSets {
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.ui)
-            implementation(compose.foundation)
-            implementation(compose.material3)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.androidx.lifecycle.viewmodel)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.runtime)
+            implementation(compose.ui)
             implementation(libs.androidx.lifecycle.runtime)
+            implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.navigation.compose)
-            implementation(libs.kotlinx.serialization.json)
-            implementation(libs.koin.core)
+            implementation(libs.androidx.sqlite.bundled)
             implementation(libs.koin.compose)
-            implementation(libs.multiplatformSettings)
+            implementation(libs.koin.core)
+            implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.datetime)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.multiplatformSettings)
             implementation(libs.room.runtime)
         }
 
