@@ -1,7 +1,7 @@
 package tech.ermakov.notes.core.navigation
 
 import kotlinx.coroutines.flow.SharedFlow
-import tech.ermakov.notes.core.navigation.models.NavigatorAction
+import tech.ermakov.notes.core.navigation.model.NavigatorAction
 
 interface Navigator {
 

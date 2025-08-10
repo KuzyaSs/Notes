@@ -1,11 +1,11 @@
-package tech.ermakov.notes.core.navigation.components
+package tech.ermakov.notes.core.navigation.component
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import tech.ermakov.notes.core.navigation.Navigator
-import tech.ermakov.notes.core.navigation.models.NavigatorAction
+import tech.ermakov.notes.core.navigation.model.NavigatorAction
 
 @Composable
 fun NavigationHandler(

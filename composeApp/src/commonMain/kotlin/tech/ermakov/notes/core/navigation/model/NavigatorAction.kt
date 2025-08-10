@@ -1,4 +1,4 @@
-package tech.ermakov.notes.core.navigation.models
+package tech.ermakov.notes.core.navigation.model
 
 import androidx.navigation.NavOptionsBuilder
 

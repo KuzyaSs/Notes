@@ -1,4 +1,4 @@
-package tech.ermakov.notes.features.home.presentation.components
+package tech.ermakov.notes.features.home.presentation.component
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -18,9 +18,9 @@ import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import tech.ermakov.notes.core.navigation.ComposeNavigator
 import tech.ermakov.notes.core.navigation.Navigator
-import tech.ermakov.notes.core.navigation.models.NavigatorAction
+import tech.ermakov.notes.core.navigation.model.NavigatorAction
 import tech.ermakov.notes.core.ui.NotesTheme
-import tech.ermakov.notes.features.home.presentation.models.HomeNavigationBarItem
+import tech.ermakov.notes.features.home.presentation.model.HomeNavigationBarItem
 
 @Composable
 internal fun HomeNavigationBar(

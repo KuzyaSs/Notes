@@ -1,9 +1,9 @@
-package tech.ermakov.notes.features.notes
+package tech.ermakov.notes.features.notes.ui
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import kotlinx.serialization.Serializable
-import tech.ermakov.notes.core.navigation.models.Destination
+import tech.ermakov.notes.core.navigation.model.Destination
 
 @Serializable
 object NotesDestination : Destination

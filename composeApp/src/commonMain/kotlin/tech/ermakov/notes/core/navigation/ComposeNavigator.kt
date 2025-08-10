@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
-import tech.ermakov.notes.core.navigation.models.NavigatorAction
+import tech.ermakov.notes.core.navigation.model.NavigatorAction
 
 internal class ComposeNavigator(
     dispatcher: CoroutineDispatcher = Dispatchers.Main.immediate,

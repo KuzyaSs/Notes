@@ -1,4 +1,5 @@
 <resources>
     <string name="notes">Notes</string>
     <string name="to_do">To-do</string>
+    <string name="add">Add</string>
 </resources>

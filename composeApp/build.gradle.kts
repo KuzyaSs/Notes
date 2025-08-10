@@ -51,6 +51,7 @@ kotlin {
             implementation(libs.androidx.navigation.compose)
             implementation(libs.androidx.sqlite.bundled)
             implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
             implementation(libs.koin.core)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.datetime)

@@ -1,7 +1,8 @@
 package tech.ermakov.notes.features.notes.data.repository
 
 import kotlinx.coroutines.flow.Flow
-import tech.ermakov.notes.features.notes.domain.Note
+import tech.ermakov.notes.features.notes.domain.model.NewNote
+import tech.ermakov.notes.features.notes.domain.model.Note
 
 interface NoteRepository {
 
@@ -10,4 +11,6 @@ interface NoteRepository {
     fun getNotesByFolderId(folderId: Int): Flow<List<Note>>
 
     fun getTrashedNotes(): Flow<List<Note>>
+
+    suspend fun insertNote(newNote: NewNote): Long
 }
