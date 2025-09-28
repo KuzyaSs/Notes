@@ -11,10 +11,12 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.koinInject
 import tech.ermakov.notes.core.navigation.Navigator
 import tech.ermakov.notes.core.navigation.component.NavigationHandler
-import tech.ermakov.notes.core.ui.NotesTheme
+import tech.ermakov.notes.core.ui.theme.NotesTheme
+import tech.ermakov.notes.features.folders.ui.foldersDestination
 import tech.ermakov.notes.features.home.presentation.HomeDestination
 import tech.ermakov.notes.features.home.presentation.homeDestination
 import tech.ermakov.notes.features.noteEditor.ui.noteEditorDestination
+import tech.ermakov.notes.features.settings.ui.settingsDestination
 
 @Preview
 @Composable
@@ -45,6 +47,8 @@ private fun NotesNavigation() {
         ) {
             homeDestination()
             noteEditorDestination()
+            foldersDestination()
+            settingsDestination()
         }
     }
 }

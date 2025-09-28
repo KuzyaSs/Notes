@@ -1,4 +1,4 @@
-package tech.ermakov.notes.features.noteEditor.ui
+package tech.ermakov.notes.features.folders.ui
 
 import androidx.compose.material3.Text
 import androidx.navigation.NavGraphBuilder
@@ -7,10 +7,10 @@ import kotlinx.serialization.Serializable
 import tech.ermakov.notes.core.navigation.model.Destination
 
 @Serializable
-object NoteEditorDestination : Destination
+object FoldersDestination : Destination
 
-fun NavGraphBuilder.noteEditorDestination() {
-    composable<NoteEditorDestination> {
-        Text(text = "NoteEditorDestination")
+fun NavGraphBuilder.foldersDestination() {
+    composable<FoldersDestination> {
+        Text(text = "FoldersDestination")
     }
 }

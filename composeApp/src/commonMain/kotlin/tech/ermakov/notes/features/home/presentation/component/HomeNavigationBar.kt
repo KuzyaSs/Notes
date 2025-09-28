@@ -19,7 +19,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import tech.ermakov.notes.core.navigation.ComposeNavigator
 import tech.ermakov.notes.core.navigation.Navigator
 import tech.ermakov.notes.core.navigation.model.NavigatorAction
-import tech.ermakov.notes.core.ui.NotesTheme
+import tech.ermakov.notes.core.ui.theme.NotesTheme
 import tech.ermakov.notes.features.home.presentation.model.HomeNavigationBarItem
 
 @Composable

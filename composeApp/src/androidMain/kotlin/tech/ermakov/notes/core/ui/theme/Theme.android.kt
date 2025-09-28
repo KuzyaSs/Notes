@@ -1,4 +1,4 @@
-package tech.ermakov.notes.core.ui
+package tech.ermakov.notes.core.ui.theme
 
 import android.app.Activity
 import androidx.compose.runtime.Composable

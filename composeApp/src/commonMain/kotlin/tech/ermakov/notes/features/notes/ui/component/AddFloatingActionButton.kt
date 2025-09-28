@@ -11,7 +11,7 @@ import notes.composeapp.generated.resources.ic_add
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import tech.ermakov.notes.core.ui.NotesTheme
+import tech.ermakov.notes.core.ui.theme.NotesTheme
 
 @Composable
 internal fun AddFloatingActionButton(

@@ -1,0 +1,88 @@
+package tech.ermakov.notes.features.notes.ui.component
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import notes.composeapp.generated.resources.Res
+import notes.composeapp.generated.resources.ic_folder
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
+import tech.ermakov.notes.core.ui.theme.NotesTheme
+import tech.ermakov.notes.features.notes.ui.model.UiNote
+import tech.ermakov.notes.features.notes.ui.model.UiNote.Companion.previewNote
+
+@Composable
+internal fun ListNoteItem(
+    note: UiNote,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(
+                color = NotesTheme.colors.backgroundPrimary,
+                shape = RoundedCornerShape(size = NotesTheme.shapes.medium),
+            )
+            .padding(all = 16.dp),
+    ) {
+        Text(
+            text = note.title.asString(),
+            color = NotesTheme.colors.textPrimary,
+            style = NotesTheme.typography.title,
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 1,
+            modifier = Modifier
+                .padding(bottom = 8.dp),
+        )
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = note.updateDate.asString(),
+                style = NotesTheme.typography.body.copy(
+                    color = NotesTheme.colors.textSecondary,
+                ),
+                modifier = Modifier
+                    .padding(end = 8.dp),
+            )
+
+            Icon(
+                painter = painterResource(resource = Res.drawable.ic_folder),
+                contentDescription = null,
+                tint = NotesTheme.colors.textSecondary,
+                modifier = Modifier
+                    .padding(end = 4.dp),
+            )
+
+            Text(
+                text = note.folderName.asString(),
+                style = NotesTheme.typography.body.copy(
+                    color = NotesTheme.colors.textSecondary,
+                ),
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 1,
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun ListNoteItemPreview() {
+    NotesTheme {
+        ListNoteItem(
+            note = previewNote,
+        )
+    }
+}

@@ -10,7 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import org.koin.compose.koinInject
 import tech.ermakov.notes.core.navigation.Navigator
 import tech.ermakov.notes.core.navigation.component.NavigationHandler
-import tech.ermakov.notes.core.ui.NotesTheme
+import tech.ermakov.notes.core.ui.theme.NotesTheme
 import tech.ermakov.notes.features.home.di.homeNavigatorQualifier
 import tech.ermakov.notes.features.home.presentation.component.HomeNavigationBar
 import tech.ermakov.notes.features.notes.ui.NotesDestination
