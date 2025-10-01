@@ -1,4 +1,4 @@
-package tech.ermakov.notes.features.notes.ui.model
+package tech.ermakov.notes.features.notes.ui.notes.model
 
 import notes.composeapp.generated.resources.Res
 import notes.composeapp.generated.resources.ic_card_view

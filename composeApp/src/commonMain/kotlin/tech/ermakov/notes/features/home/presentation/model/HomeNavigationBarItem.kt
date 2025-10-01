@@ -8,7 +8,7 @@ import notes.composeapp.generated.resources.to_do
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 import tech.ermakov.notes.core.navigation.model.Destination
-import tech.ermakov.notes.features.notes.ui.NotesDestination
+import tech.ermakov.notes.features.notes.ui.notes.NotesDestination
 import tech.ermakov.notes.features.toDo.ui.ToDoDestination
 
 internal enum class HomeNavigationBarItem(

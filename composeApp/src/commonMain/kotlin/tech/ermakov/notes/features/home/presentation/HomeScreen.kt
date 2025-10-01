@@ -13,8 +13,8 @@ import tech.ermakov.notes.core.navigation.component.NavigationHandler
 import tech.ermakov.notes.core.ui.theme.NotesTheme
 import tech.ermakov.notes.features.home.di.homeNavigatorQualifier
 import tech.ermakov.notes.features.home.presentation.component.HomeNavigationBar
-import tech.ermakov.notes.features.notes.ui.NotesDestination
-import tech.ermakov.notes.features.notes.ui.notesDestination
+import tech.ermakov.notes.features.notes.ui.notes.NotesDestination
+import tech.ermakov.notes.features.notes.ui.notes.notesDestination
 import tech.ermakov.notes.features.toDo.ui.toDoDestination
 
 @Composable
@@ -34,12 +34,12 @@ internal fun HomeScreen() {
             HomeNavigationBar(homeNavigator = homeNavigator, navController = navController)
         },
         containerColor = NotesTheme.colors.backgroundSecondary,
-    ) { innerPadding ->
+    ) { paddingValues ->
         NavHost(
             navController = navController,
             startDestination = NotesDestination,
             modifier = Modifier
-                .padding(paddingValues = innerPadding),
+                .padding(paddingValues = paddingValues),
         ) {
             notesDestination()
             toDoDestination()

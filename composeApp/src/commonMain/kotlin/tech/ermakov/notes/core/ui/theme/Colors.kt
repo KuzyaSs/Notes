@@ -26,7 +26,7 @@ fun getNotesColors(isDarkTheme: Boolean): NotesColors {
             textPrimary = Color(0xFFFFFFFF),
             textSecondary = Color(0xFF9E9E9E),
             backgroundPrimary = Color(0xFF1A1A1A),
-            backgroundSecondary = Color(0x00000000),
+            backgroundSecondary = Color(0xFF000000),
             accent = Color(0xFF0B99FF),
             transparent = Color(0x00000000),
         )

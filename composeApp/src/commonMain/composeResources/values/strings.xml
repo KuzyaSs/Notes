@@ -1,5 +1,7 @@
 <resources>
     <string name="notes">Notes</string>
+    <string name="all_notes_folder">All</string>
+    <string name="trash_folder">Trash</string>
     <string name="to_do">To-do</string>
     <string name="add">Add</string>
 </resources>

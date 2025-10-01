@@ -1,4 +1,4 @@
-package tech.ermakov.notes.features.notes.ui.component
+package tech.ermakov.notes.features.notes.ui.notes.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -10,12 +10,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import tech.ermakov.notes.core.ui.theme.NotesTheme
-import tech.ermakov.notes.features.notes.ui.model.UiNote
-import tech.ermakov.notes.features.notes.ui.model.UiNote.Companion.previewNote
+import tech.ermakov.notes.features.notes.ui.notes.model.UiNote
 
 @Composable
 internal fun NoteGrid(
     notes: List<UiNote>,
+    onNoteClick: (noteId: Long) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyVerticalGrid(
@@ -30,6 +30,7 @@ internal fun NoteGrid(
         items(items = notes) { note ->
             CardNoteItem(
                 note = note,
+                onClick = { onNoteClick(note.id) },
             )
         }
     }
@@ -41,8 +42,9 @@ private fun NoteGridPreview() {
     NotesTheme {
         NoteGrid(
             notes = buildList {
-                repeat(5) { add(previewNote) }
+                repeat(5) { add(UiNote.Default) }
             },
+            onNoteClick = { },
         )
     }
 }

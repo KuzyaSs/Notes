@@ -15,7 +15,7 @@ import tech.ermakov.notes.core.ui.theme.NotesTheme
 import tech.ermakov.notes.features.folders.ui.foldersDestination
 import tech.ermakov.notes.features.home.presentation.HomeDestination
 import tech.ermakov.notes.features.home.presentation.homeDestination
-import tech.ermakov.notes.features.noteEditor.ui.noteEditorDestination
+import tech.ermakov.notes.features.notes.ui.noteEditor.noteEditorDestination
 import tech.ermakov.notes.features.settings.ui.settingsDestination
 
 @Preview

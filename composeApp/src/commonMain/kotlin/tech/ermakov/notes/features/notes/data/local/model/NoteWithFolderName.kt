@@ -16,7 +16,8 @@ internal fun NoteWithFolderName.toNote(): Note = Note(
     folderId = noteEntity.folderId,
     folderName = folderName.orEmpty(),
     title = noteEntity.title,
-    content = noteEntity.content,
-    createDate = noteEntity.createDate,
+    body = noteEntity.body,
+    isTrashed = noteEntity.isTrashed,
     updateDate = noteEntity.updateDate,
+    createDate = noteEntity.createDate,
 )

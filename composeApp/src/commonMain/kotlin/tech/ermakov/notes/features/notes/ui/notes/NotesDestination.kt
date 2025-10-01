@@ -1,4 +1,4 @@
-package tech.ermakov.notes.features.notes.ui
+package tech.ermakov.notes.features.notes.ui.notes
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable

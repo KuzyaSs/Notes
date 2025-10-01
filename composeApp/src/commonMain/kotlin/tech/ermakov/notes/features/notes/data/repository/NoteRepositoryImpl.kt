@@ -6,22 +6,22 @@ import tech.ermakov.notes.features.notes.data.local.dao.NoteDao
 import tech.ermakov.notes.features.notes.data.local.model.NoteWithFolderName
 import tech.ermakov.notes.features.notes.data.local.model.toNote
 import tech.ermakov.notes.features.notes.data.local.model.toNoteEntity
-import tech.ermakov.notes.features.notes.domain.model.NewNote
 import tech.ermakov.notes.features.notes.domain.model.Note
+import kotlin.collections.map
 
 internal class NoteRepositoryImpl(
     private val noteDao: NoteDao,
 ) : NoteRepository {
 
     override fun getAllNotes(): Flow<List<Note>> {
-        return noteDao.getAllNotes().map { noteWithFolderNames ->
-            noteWithFolderNames.map(NoteWithFolderName::toNote)
+        return noteDao.getAllNotes().map { notesWithFolderName ->
+            notesWithFolderName.map(NoteWithFolderName::toNote)
         }
     }
 
-    override fun getNotesByFolderId(folderId: Int): Flow<List<Note>> {
-        return noteDao.getNotesByFolderId(folderId = folderId).map { noteWithFolderNames ->
-            noteWithFolderNames.map(NoteWithFolderName::toNote)
+    override fun getNotesByFolderId(folderId: Long): Flow<List<Note>> {
+        return noteDao.getNotesByFolderId(folderId = folderId).map { notesWithFolderName ->
+            notesWithFolderName.map(NoteWithFolderName::toNote)
         }
     }
 
@@ -31,9 +31,19 @@ internal class NoteRepositoryImpl(
         }
     }
 
-    override suspend fun insertNote(newNote: NewNote): Long {
-        return noteDao.insertNote(
-            noteEntity = newNote.toNoteEntity(),
+    override fun getNoteById(noteId: Long): Flow<Note?> {
+        return noteDao.getNoteById(noteId = noteId).map { noteWithFolderName ->
+            noteWithFolderName?.toNote()
+        }
+    }
+
+    override suspend fun upsertNote(note: Note): Long {
+        return noteDao.upsertNote(
+            noteEntity = note.toNoteEntity(),
         )
+    }
+
+    override suspend fun deleteNoteById(noteId: Long): Int {
+        return noteDao.deleteNoteById(noteId = noteId)
     }
 }

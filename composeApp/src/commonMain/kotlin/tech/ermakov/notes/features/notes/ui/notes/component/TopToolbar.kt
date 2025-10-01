@@ -1,4 +1,4 @@
-package tech.ermakov.notes.features.notes.ui.component
+package tech.ermakov.notes.features.notes.ui.notes.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -21,7 +21,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import tech.ermakov.notes.core.ui.theme.NotesTheme
-import tech.ermakov.notes.features.notes.ui.model.UiNoteListType
+import tech.ermakov.notes.features.notes.ui.notes.model.UiNoteListType
 
 @Composable
 internal fun TopToolbar(
@@ -33,7 +33,7 @@ internal fun TopToolbar(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier
+        modifier = modifier,
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

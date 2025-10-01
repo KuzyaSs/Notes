@@ -1,4 +1,4 @@
-package tech.ermakov.notes.features.notes.ui.component
+package tech.ermakov.notes.features.notes.ui.notes.component
 
 import androidx.compose.runtime.Composable
 

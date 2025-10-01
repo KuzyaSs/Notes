@@ -1,4 +1,4 @@
-package tech.ermakov.notes.features.notes.ui
+package tech.ermakov.notes.features.notes.ui.notes
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,15 +15,15 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 import tech.ermakov.notes.core.ui.theme.NotesTheme
-import tech.ermakov.notes.features.notes.ui.component.AddFloatingActionButton
-import tech.ermakov.notes.features.notes.ui.component.NoteGrid
-import tech.ermakov.notes.features.notes.ui.component.NoteList
-import tech.ermakov.notes.features.notes.ui.component.SearchTextField
-import tech.ermakov.notes.features.notes.ui.component.TopToolbar
-import tech.ermakov.notes.features.notes.ui.model.NotesAction
-import tech.ermakov.notes.features.notes.ui.model.NotesUiState
-import tech.ermakov.notes.features.notes.ui.model.UiNote.Companion.previewNote
-import tech.ermakov.notes.features.notes.ui.model.UiNoteListType
+import tech.ermakov.notes.features.notes.ui.notes.component.AddFloatingActionButton
+import tech.ermakov.notes.features.notes.ui.notes.component.NoteGrid
+import tech.ermakov.notes.features.notes.ui.notes.component.NoteList
+import tech.ermakov.notes.features.notes.ui.notes.component.SearchTextField
+import tech.ermakov.notes.features.notes.ui.notes.component.TopToolbar
+import tech.ermakov.notes.features.notes.ui.notes.model.NotesAction
+import tech.ermakov.notes.features.notes.ui.notes.model.NotesUiState
+import tech.ermakov.notes.features.notes.ui.notes.model.UiNote
+import tech.ermakov.notes.features.notes.ui.notes.model.UiNoteListType
 
 @Composable
 internal fun NotesScreen() {
@@ -50,11 +50,10 @@ private fun NotesScreenContent(
             )
         },
         containerColor = NotesTheme.colors.backgroundSecondary,
-    ) { paddingValues ->
+    ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues = paddingValues),
+                .fillMaxSize(),
         ) {
             TopToolbar(
                 noteListType = state.noteListType,
@@ -86,6 +85,9 @@ private fun NotesScreenContent(
                 state.noteListType == UiNoteListType.LIST -> {
                     NoteList(
                         notes = state.notes,
+                        onNoteClick = { noteId ->
+                            onAction(NotesAction.OnNoteClick(noteId = noteId))
+                        },
                         modifier = Modifier
                             .padding(horizontal = 16.dp),
                     )
@@ -94,6 +96,9 @@ private fun NotesScreenContent(
                 state.noteListType == UiNoteListType.CARD -> {
                     NoteGrid(
                         notes = state.notes,
+                        onNoteClick = { noteId ->
+                            onAction(NotesAction.OnNoteClick(noteId = noteId))
+                        },
                         modifier = Modifier
                             .padding(horizontal = 16.dp),
                     )
@@ -110,7 +115,7 @@ private fun NotesScreenContentPreview() {
         NotesScreenContent(
             state = NotesUiState(
                 notes = buildList {
-                    repeat(50) { add(previewNote) }
+                    repeat(2) { add(UiNote.Default) }
                 },
                 isLoading = false,
             ),
@@ -131,4 +136,3 @@ private fun LoadingNotesScreenContentPreview() {
         )
     }
 }
-
