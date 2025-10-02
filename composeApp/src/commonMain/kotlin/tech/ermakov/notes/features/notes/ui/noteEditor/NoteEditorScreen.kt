@@ -3,28 +3,26 @@ package tech.ermakov.notes.features.notes.ui.noteEditor
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.input.TextFieldLineLimits
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.input.TextFieldState
-import androidx.compose.foundation.text.selection.LocalTextSelectionColors
-import androidx.compose.foundation.text.selection.TextSelectionColors
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
 import tech.ermakov.notes.core.ui.theme.NotesTheme
-import tech.ermakov.notes.features.notes.ui.noteEditor.components.TopToolbar
+import tech.ermakov.notes.features.notes.ui.noteEditor.component.BodyTextField
+import tech.ermakov.notes.features.notes.ui.noteEditor.component.TitleTextField
+import tech.ermakov.notes.features.notes.ui.noteEditor.component.TopToolbar
 import tech.ermakov.notes.features.notes.ui.noteEditor.model.EditableNote
 import tech.ermakov.notes.features.notes.ui.noteEditor.model.NoteEditorAction
 import tech.ermakov.notes.features.notes.ui.noteEditor.model.NoteEditorUiState
@@ -45,6 +43,7 @@ internal fun NoteEditorScreen(
     )
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun NoteEditorScreenContent(
     state: NoteEditorUiState,
@@ -52,50 +51,59 @@ private fun NoteEditorScreenContent(
 ) {
     Scaffold(
         containerColor = NotesTheme.colors.backgroundPrimary,
+        modifier = Modifier
+            .safeDrawingPadding(),
     ) { paddingValues ->
+        BackHandler {
+            onAction(NoteEditorAction.OnBackClick)
+        }
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .verticalScroll(state = rememberScrollState())
                 .padding(paddingValues = paddingValues),
         ) {
             TopToolbar(
+                menuActions = state.getMenuActions(),
+                onMenuActionClick = { menuAction ->
+                    onAction(NoteEditorAction.OnMenuActionClick(menuAction = menuAction))
+                },
                 onBackClick = {
                     onAction(NoteEditorAction.OnBackClick)
                 },
                 modifier = Modifier
                     .padding(
-                        all = 16.dp,
+                        start = 16.dp,
+                        top = 16.dp,
+                        end = 16.dp,
+                        bottom = 24.dp,
                     ),
             )
 
-            CompositionLocalProvider(
-                LocalTextSelectionColors provides TextSelectionColors(
-                    handleColor = NotesTheme.colors.accent,
-                    backgroundColor = NotesTheme.colors.accent.copy(alpha = 0.4f),
-                )
-            ) {
-                // Title.
-                BasicTextField(
-                    state = state.note.titleTextField,
-                    textStyle = NotesTheme.typography.display.copy(
-                        fontWeight = FontWeight.Bold,
+            TitleTextField(
+                state = state.note.titleTextField,
+                isEnabled = state.isEditEnabled,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = 16.dp,
+                        end = 16.dp,
+                        bottom = 16.dp,
                     ),
-                    lineLimits = TextFieldLineLimits.SingleLine,
-                    cursorBrush = SolidColor(NotesTheme.colors.textPrimary),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 16.dp),
-                )
+            )
 
-                // Content.
-                BasicTextField(
-                    state = state.note.bodyTextField,
-                    textStyle = NotesTheme.typography.body,
-                    cursorBrush = SolidColor(NotesTheme.colors.textPrimary),
-                    modifier = Modifier
-                        .fillMaxSize(),
-                )
-            }
+            BodyTextField(
+                state = state.note.bodyTextField,
+                isEnabled = state.isEditEnabled,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(
+                        start = 16.dp,
+                        end = 16.dp,
+                        bottom = 16.dp,
+                    ),
+            )
         }
     }
 }

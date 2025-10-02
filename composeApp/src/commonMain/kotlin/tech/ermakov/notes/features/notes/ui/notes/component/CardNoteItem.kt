@@ -35,7 +35,7 @@ internal fun CardNoteItem(
             .heightIn(min = 128.dp)
             .background(
                 color = NotesTheme.colors.backgroundPrimary,
-                shape = RoundedCornerShape(size = NotesTheme.shapes.medium),
+                shape = NotesTheme.shapes.medium,
             )
             .pointerInput(Unit) {
                 detectTapGestures(

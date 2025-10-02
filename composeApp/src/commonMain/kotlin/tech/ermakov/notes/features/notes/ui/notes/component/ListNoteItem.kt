@@ -33,7 +33,7 @@ internal fun ListNoteItem(
             .fillMaxWidth()
             .background(
                 color = NotesTheme.colors.backgroundPrimary,
-                shape = RoundedCornerShape(size = NotesTheme.shapes.medium),
+                shape = NotesTheme.shapes.medium,
             )
             .pointerInput(Unit) {
                 detectTapGestures(

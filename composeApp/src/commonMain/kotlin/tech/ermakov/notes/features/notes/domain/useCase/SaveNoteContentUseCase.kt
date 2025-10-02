@@ -18,8 +18,8 @@ class SaveNoteContentUseCase(
             return if (noteContentEdit.id == NEW_NOTE_ID) {
                 SaveNoteContentResult.Nothing
             } else {
-                notesRepository.deleteNoteById(noteId = noteContentEdit.id)
-                SaveNoteContentResult.Deleted
+                notesRepository.deleteNotePermanentlyById(noteId = noteContentEdit.id)
+                SaveNoteContentResult.DeletedPermanently
             }
         }
 

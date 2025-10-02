@@ -1,7 +1,18 @@
 <resources>
+    <!-- Note -->
     <string name="notes">Notes</string>
+
+    <!-- To-do -->
+    <string name="to_do">To-do</string>
+
+    <!-- Folder -->
     <string name="all_notes_folder">All</string>
     <string name="trash_folder">Trash</string>
-    <string name="to_do">To-do</string>
+
+    <!-- Action -->
     <string name="add">Add</string>
+    <string name="move">Move</string>
+    <string name="delete">Delete</string>
+    <string name="delete_permanently">Delete permanently</string>
+    <string name="restore">Restore</string>
 </resources>

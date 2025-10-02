@@ -26,7 +26,7 @@ sealed interface SaveNoteContentResult {
     /**
      * The existence note is deleted.
      */
-    data object Deleted : SaveNoteContentResult
+    data object DeletedPermanently : SaveNoteContentResult
 
     /**
      * Nothing happened (e.g., existence note isn't changed).

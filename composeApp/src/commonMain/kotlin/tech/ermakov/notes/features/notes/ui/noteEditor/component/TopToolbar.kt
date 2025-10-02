@@ -1,9 +1,10 @@
-package tech.ermakov.notes.features.notes.ui.noteEditor.components
+package tech.ermakov.notes.features.notes.ui.noteEditor.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -18,10 +19,14 @@ import notes.composeapp.generated.resources.notes
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import tech.ermakov.notes.core.ui.model.MenuAction
 import tech.ermakov.notes.core.ui.theme.NotesTheme
+import tech.ermakov.notes.features.notes.ui.noteEditor.model.NoteEditorMenuAction
 
 @Composable
 internal fun TopToolbar(
+    menuActions: List<MenuAction>,
+    onMenuActionClick: (menuAction: NoteEditorMenuAction) -> Unit,
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -47,10 +52,22 @@ internal fun TopToolbar(
             color = NotesTheme.colors.textPrimary,
             style = NotesTheme.typography.headline,
         )
+
+        Spacer(
+            modifier = Modifier
+                .weight(weight = 1f),
+        )
+
+        MoreIcon(
+            menuActions = menuActions,
+            onMenuActionClick = onMenuActionClick,
+            modifier = Modifier
+                .padding(end = 8.dp),
+        )
     }
-
-
 }
+
+
 
 @Preview
 @Composable
@@ -60,6 +77,8 @@ private fun TopToolbarPreview() {
             modifier = Modifier.background(color = NotesTheme.colors.backgroundSecondary),
         ) {
             TopToolbar(
+                menuActions = emptyList(),
+                onMenuActionClick = { },
                 onBackClick = { },
             )
         }

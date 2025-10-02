@@ -43,7 +43,19 @@ internal class NoteRepositoryImpl(
         )
     }
 
+    override suspend fun moveNoteById(noteId: Long, folderId: Long): Int {
+        return noteDao.moveNoteById(noteId = noteId, folderId = folderId)
+    }
+
+    override suspend fun restoreNoteById(noteId: Long): Int {
+        return noteDao.restoreNoteById(noteId = noteId)
+    }
+
     override suspend fun deleteNoteById(noteId: Long): Int {
         return noteDao.deleteNoteById(noteId = noteId)
+    }
+
+    override suspend fun deleteNotePermanentlyById(noteId: Long): Int {
+        return noteDao.deleteNotePermanentlyById(noteId = noteId)
     }
 }

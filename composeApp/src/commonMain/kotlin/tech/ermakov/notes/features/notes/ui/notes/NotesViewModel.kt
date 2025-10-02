@@ -10,6 +10,7 @@ import tech.ermakov.notes.core.navigation.Navigator
 import tech.ermakov.notes.core.navigation.model.NavigatorAction
 import tech.ermakov.notes.core.ui.viewModel.BaseViewModel
 import tech.ermakov.notes.features.folders.domain.model.ALL_NOTES_FOLDER_ID
+import tech.ermakov.notes.features.folders.domain.model.TRASH_FOLDER_ID
 import tech.ermakov.notes.features.folders.ui.FoldersDestination
 import tech.ermakov.notes.features.notes.domain.model.NEW_NOTE_ID
 import tech.ermakov.notes.features.notes.ui.noteEditor.NoteEditorDestination
@@ -85,7 +86,11 @@ internal class NotesViewModel(
             action = NavigatorAction.Navigate(
                 destination = NoteEditorDestination(
                     noteId = noteId,
-                    folderId = folderId,
+                    folderId = if (noteId == NEW_NOTE_ID && folderId == TRASH_FOLDER_ID) {
+                        ALL_NOTES_FOLDER_ID
+                    } else {
+                        folderId
+                    },
                 )
             ),
         )

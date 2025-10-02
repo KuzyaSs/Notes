@@ -1,5 +1,6 @@
 package tech.ermakov.notes.features.home.presentation
 
+import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -39,6 +40,7 @@ internal fun HomeScreen() {
             navController = navController,
             startDestination = NotesDestination,
             modifier = Modifier
+                .consumeWindowInsets(paddingValues = paddingValues)
                 .padding(paddingValues = paddingValues),
         ) {
             notesDestination()

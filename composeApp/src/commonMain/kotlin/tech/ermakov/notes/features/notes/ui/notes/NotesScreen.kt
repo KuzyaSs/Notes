@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -50,6 +51,8 @@ private fun NotesScreenContent(
             )
         },
         containerColor = NotesTheme.colors.backgroundSecondary,
+        modifier = Modifier
+            .safeDrawingPadding(),
     ) {
         Column(
             modifier = Modifier
