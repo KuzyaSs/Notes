@@ -1,4 +1,4 @@
-package tech.ermakov.notes.core.ui.component
+package tech.ermakov.notes.core.ui.component.textSelectionColors
 
 import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.runtime.Composable

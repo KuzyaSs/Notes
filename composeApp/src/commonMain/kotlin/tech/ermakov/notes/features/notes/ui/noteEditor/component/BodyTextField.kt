@@ -10,7 +10,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import tech.ermakov.notes.core.ui.component.NotesTextSelectionColors
+import tech.ermakov.notes.core.ui.component.textSelectionColors.NotesTextSelectionColors
 import tech.ermakov.notes.core.ui.theme.NotesTheme
 
 @Composable

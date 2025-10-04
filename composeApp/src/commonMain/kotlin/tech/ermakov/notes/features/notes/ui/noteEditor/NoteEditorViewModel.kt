@@ -50,7 +50,7 @@ internal class NoteEditorViewModel(
 
     override fun onAction(action: NoteEditorAction) {
         when (action) {
-            NoteEditorAction.OnBackClick -> backToPreviousScreen(
+            NoteEditorAction.OnBackClick -> navigateBack(
                 action = { saveNoteContent() },
             )
 
@@ -75,7 +75,7 @@ internal class NoteEditorViewModel(
      *
      * @param action the action that will be invoked before backing.
      */
-    private fun backToPreviousScreen(action: suspend () -> Unit) {
+    private fun navigateBack(action: suspend () -> Unit) {
         if (!state.value.isBacking) {
             _state.update { state ->
                 state.copy(
@@ -131,13 +131,13 @@ internal class NoteEditorViewModel(
     }
 
     private fun deleteNote() {
-        backToPreviousScreen(
+        navigateBack(
             action = { noteRepository.deleteNoteById(noteId = state.value.note.id) },
         )
     }
 
     private fun deleteNotePermanently() {
-        backToPreviousScreen(
+        navigateBack(
             action = { noteRepository.deleteNotePermanentlyById(noteId = state.value.note.id) },
         )
     }

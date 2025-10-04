@@ -6,6 +6,7 @@
     <string name="to_do">To-do</string>
 
     <!-- Folder -->
+    <string name="folders">Folders</string>
     <string name="all_notes_folder">All</string>
     <string name="trash_folder">Trash</string>
 

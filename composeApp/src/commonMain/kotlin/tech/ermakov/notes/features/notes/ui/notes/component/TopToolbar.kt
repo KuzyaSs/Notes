@@ -21,12 +21,13 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import tech.ermakov.notes.core.ui.theme.NotesTheme
+import tech.ermakov.notes.features.folders.ui.component.TopToolbar
 import tech.ermakov.notes.features.notes.ui.notes.model.UiNoteListType
 
 @Composable
 internal fun TopToolbar(
     noteListType: UiNoteListType,
-    onToolbarClick: () -> Unit,
+    onTitleClick: () -> Unit,
     onNoteListTypeClick: () -> Unit,
     onSettingsClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -40,7 +41,7 @@ internal fun TopToolbar(
             modifier = Modifier
                 .pointerInput(Unit) {
                     detectTapGestures(
-                        onTap = { onToolbarClick() },
+                        onTap = { onTitleClick() },
                     )
                 },
         ) {
@@ -98,7 +99,7 @@ private fun TopToolbarPreview() {
         ) {
             TopToolbar(
                 noteListType = UiNoteListType.CARD,
-                onToolbarClick = { },
+                onTitleClick = { },
                 onNoteListTypeClick = { },
                 onSettingsClick = { },
             )

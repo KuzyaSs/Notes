@@ -13,10 +13,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import notes.composeapp.generated.resources.Res
+import notes.composeapp.generated.resources.add
+import notes.composeapp.generated.resources.ic_add
+import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 import tech.ermakov.notes.core.ui.theme.NotesTheme
-import tech.ermakov.notes.features.notes.ui.notes.component.AddFloatingActionButton
+import tech.ermakov.notes.core.ui.component.fab.NotesFloatingActionButton
 import tech.ermakov.notes.features.notes.ui.notes.component.NoteGrid
 import tech.ermakov.notes.features.notes.ui.notes.component.NoteList
 import tech.ermakov.notes.features.notes.ui.notes.component.SearchTextField
@@ -44,10 +48,12 @@ private fun NotesScreenContent(
 ) {
     Scaffold(
         floatingActionButton = {
-            AddFloatingActionButton(
+            NotesFloatingActionButton(
+                drawableRes = Res.drawable.ic_add,
                 onClick = {
-                    onAction(NotesAction.OnAddClick)
+                    onAction(NotesAction.OnCreateNewNoteClick)
                 },
+                contentDescription = stringResource(resource = Res.string.add),
             )
         },
         containerColor = NotesTheme.colors.backgroundSecondary,
@@ -60,7 +66,7 @@ private fun NotesScreenContent(
         ) {
             TopToolbar(
                 noteListType = state.noteListType,
-                onToolbarClick = { onAction(NotesAction.OnToolbarClick) },
+                onTitleClick = { onAction(NotesAction.OnToolbarTitleClick) },
                 onNoteListTypeClick = { onAction(NotesAction.OnNoteListTypeClick) },
                 onSettingsClick = { onAction(NotesAction.OnSettingsClick) },
                 modifier = Modifier

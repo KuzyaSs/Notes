@@ -2,7 +2,7 @@ package tech.ermakov.notes.features.notes.ui.notes.model
 
 internal sealed interface NotesAction {
 
-    data object OnToolbarClick : NotesAction
+    data object OnToolbarTitleClick : NotesAction
 
     data object OnNoteListTypeClick : NotesAction
 
@@ -12,5 +12,5 @@ internal sealed interface NotesAction {
         val noteId: Long,
     ) : NotesAction
 
-    data object OnAddClick : NotesAction
+    data object OnCreateNewNoteClick : NotesAction
 }

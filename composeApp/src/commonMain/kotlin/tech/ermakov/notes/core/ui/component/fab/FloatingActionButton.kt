@@ -1,4 +1,4 @@
-package tech.ermakov.notes.features.notes.ui.notes.component
+package tech.ermakov.notes.core.ui.component.fab
 
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.FloatingActionButton
@@ -8,15 +8,18 @@ import androidx.compose.ui.Modifier
 import notes.composeapp.generated.resources.Res
 import notes.composeapp.generated.resources.add
 import notes.composeapp.generated.resources.ic_add
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import tech.ermakov.notes.core.ui.theme.NotesTheme
 
 @Composable
-internal fun AddFloatingActionButton(
+internal fun NotesFloatingActionButton(
+    drawableRes: DrawableResource,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    contentDescription: String? = null,
 ) {
     FloatingActionButton(
         onClick = onClick,
@@ -25,8 +28,8 @@ internal fun AddFloatingActionButton(
         modifier = modifier,
     ) {
         Icon(
-            painter = painterResource(resource = Res.drawable.ic_add),
-            contentDescription = stringResource(resource = Res.string.add),
+            painter = painterResource(resource = drawableRes),
+            contentDescription = contentDescription,
             tint = NotesTheme.colors.accent,
         )
     }
@@ -34,10 +37,12 @@ internal fun AddFloatingActionButton(
 
 @Preview
 @Composable
-private fun AddFloatingActionButtonPreview() {
+private fun FloatingActionButtonPreview() {
     NotesTheme {
-        AddFloatingActionButton(
+        NotesFloatingActionButton(
+            drawableRes = Res.drawable.ic_add,
             onClick = { },
+            contentDescription = stringResource(resource = Res.string.add),
         )
     }
 }

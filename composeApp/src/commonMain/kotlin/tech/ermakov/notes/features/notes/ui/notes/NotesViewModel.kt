@@ -39,14 +39,14 @@ internal class NotesViewModel(
 
     override fun onAction(action: NotesAction) {
         when (action) {
-            NotesAction.OnToolbarClick -> navigateToFoldersScreen()
+            NotesAction.OnToolbarTitleClick -> navigateToFoldersScreen()
             NotesAction.OnNoteListTypeClick -> changeNoteListType()
             NotesAction.OnSettingsClick -> navigateToSettingsScreen()
             is NotesAction.OnNoteClick -> navigateToEditorScreen(
                 noteId = action.noteId,
             )
 
-            NotesAction.OnAddClick -> navigateToEditorScreen(
+            NotesAction.OnCreateNewNoteClick -> navigateToEditorScreen(
                 noteId = NEW_NOTE_ID,
             )
         }
